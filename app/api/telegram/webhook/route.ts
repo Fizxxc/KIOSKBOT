@@ -5,6 +5,10 @@ import { handleTelegramUpdate } from "@/lib/bot";
 import { createSupabaseAdminClient } from "@/lib/supabase/server";
 import { requireEnv } from "@/lib/utils";
 
+export async function GET() {
+  return NextResponse.json({ ok: true, message: "Telegram webhook endpoint is active. Use POST for updates." });
+}
+
 export async function POST(request: Request) {
   const secretToken = request.headers.get("x-telegram-bot-api-secret-token");
   if (secretToken !== requireEnv("TELEGRAM_WEBHOOK_SECRET_TOKEN")) {
