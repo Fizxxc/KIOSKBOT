@@ -33,17 +33,6 @@ export default async function BroadcastDetailPage({ params }: { params: Promise<
           <h1 style={{ marginTop: 12 }}>{broadcast.title}</h1>
           <p>Status: {broadcast.status} • Dikirim: {broadcast.sent_count} • Gagal: {broadcast.failed_count}</p>
         </div>
-        <div className="row" style={{ gap: 10 }}>
-          {broadcast.status === "draft" && (
-            <button className="button primary" onClick={() => {}}>Kirim</button>
-          )}
-          {broadcast.status === "running" && (
-            <button className="button ghost" onClick={() => {}}>Pause</button>
-          )}
-          {(broadcast.status === "paused" || broadcast.status === "failed") && (
-            <button className="button ghost" onClick={() => {}}><RefreshCw size={15} /> Retry</button>
-          )}
-        </div>
       </header>
 
       <BroadcastDetailClient
