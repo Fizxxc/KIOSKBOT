@@ -17,7 +17,8 @@ export async function GET() {
 
   try {
     const info = await getWebhookInfo();
-    return NextResponse.json({ ok: true, info });
+    const baseUrl = getPublicBaseUrl();
+    return NextResponse.json({ ok: true, info, base_url: baseUrl });
   } catch (error) {
     return NextResponse.json({ ok: false, error: error instanceof Error ? error.message : "Failed" }, { status: 500 });
   }
