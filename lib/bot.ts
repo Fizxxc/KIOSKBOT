@@ -151,7 +151,8 @@ async function sendProductDetail(chatId: number, telegramUserId: number, product
 }
 
 async function askNote(chatId: number, telegramUserId: number) {
-  await setConversation(telegramUserId, "awaiting_note");
+  const conversation = await getConversation(telegramUserId);
+  await setConversation(telegramUserId, "awaiting_note", conversation?.context ?? {});
   await sendMessage(
     chatId,
     "Catatan untuk pesanan? Contoh: tanpa es, pedas sedang, atau kosongkan jika tidak ada.\n\nKirim catatan atau klik tombol di bawah.",

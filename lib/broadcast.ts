@@ -52,6 +52,7 @@ async function sendBatch(db: Db, broadcast: any, recipients: any[], maxRetries: 
           body: JSON.stringify({
             chat_id: recipient.telegram_user_id,
             text: broadcast.message,
+            parse_mode: "HTML",
             reply_markup: broadcast.cta_label && broadcast.cta_url
               ? { inline_keyboard: [[{ text: broadcast.cta_label, url: broadcast.cta_url }]] }
               : undefined,
